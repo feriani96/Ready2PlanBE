@@ -1,0 +1,45 @@
+{
+  "changelogDate": "20250513070712",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unitPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "estimatedMonthlySales",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "durationInMonths",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "ProductOrService",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "revenueForecast",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "revenueForecasts",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessPlan",
+      "relationshipName": "businessPlan",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

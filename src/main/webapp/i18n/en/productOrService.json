@@ -1,0 +1,31 @@
+{
+  "ready2PlanBeApp": {
+    "productOrService": {
+      "home": {
+        "title": "Product Or Services",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product Or Service",
+        "createOrEditLabel": "Create or edit a Product Or Service",
+        "search": "Search for Product Or Service",
+        "notFound": "No Product Or Services found"
+      },
+      "created": "A new Product Or Service is created with identifier {{ param }}",
+      "updated": "A Product Or Service is updated with identifier {{ param }}",
+      "deleted": "A Product Or Service is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Or Service {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Or Service"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "unitPrice": "Unit Price",
+      "estimatedMonthlySales": "Estimated Monthly Sales",
+      "durationInMonths": "Duration In Months",
+      "revenueForecasts": "Revenue Forecasts",
+      "businessPlan": "Business Plan"
+    }
+  }
+}

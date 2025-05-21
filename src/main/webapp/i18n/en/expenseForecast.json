@@ -1,0 +1,27 @@
+{
+  "ready2PlanBeApp": {
+    "expenseForecast": {
+      "home": {
+        "title": "Expense Forecasts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Expense Forecast",
+        "createOrEditLabel": "Create or edit a Expense Forecast",
+        "search": "Search for Expense Forecast",
+        "notFound": "No Expense Forecasts found"
+      },
+      "created": "A new Expense Forecast is created with identifier {{ param }}",
+      "updated": "A Expense Forecast is updated with identifier {{ param }}",
+      "deleted": "A Expense Forecast is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Expense Forecast {{ id }}?"
+      },
+      "detail": {
+        "title": "Expense Forecast"
+      },
+      "id": "ID",
+      "label": "Label",
+      "monthlyAmount": "Monthly Amount",
+      "forecast": "Forecast"
+    }
+  }
+}

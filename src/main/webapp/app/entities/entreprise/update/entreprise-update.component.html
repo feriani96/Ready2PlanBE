@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-entreprise-heading"
+        data-cy="EntrepriseCreateUpdateHeading"
+        jhiTranslate="ready2PlanBeApp.entreprise.home.createOrEditLabel"
+      >
+        Create or edit a Entreprise
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.nom_etp" for="field_nom_etp">Nom Etp</label>
+          <input type="text" class="form-control" name="nom_etp" id="field_nom_etp" data-cy="nom_etp" formControlName="nom_etp" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.pays" for="field_pays">Pays</label>
+          <input type="text" class="form-control" name="pays" id="field_pays" data-cy="pays" formControlName="pays" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.telephone" for="field_telephone">Telephone</label>
+          <input type="number" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.deviseSize" for="field_deviseSize">Devise Size</label>
+          <input
+            type="number"
+            class="form-control"
+            name="deviseSize"
+            id="field_deviseSize"
+            data-cy="deviseSize"
+            formControlName="deviseSize"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ready2PlanBeApp.entreprise.devise" for="field_devise">Devise</label>
+          <input type="text" class="form-control" name="devise" id="field_devise" data-cy="devise" formControlName="devise" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

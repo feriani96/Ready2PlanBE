@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="revenueForecast">
+      <h2 data-cy="revenueForecastDetailsHeading">
+        <span jhiTranslate="ready2PlanBeApp.revenueForecast.detail.title">Revenue Forecast</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ revenueForecast.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.month">Month</span></dt>
+        <dd>
+          <span>{{ revenueForecast.month }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.year">Year</span></dt>
+        <dd>
+          <span>{{ revenueForecast.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.unitsSold">Units Sold</span></dt>
+        <dd>
+          <span>{{ revenueForecast.unitsSold }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.totalRevenue">Total Revenue</span></dt>
+        <dd>
+          <span>{{ revenueForecast.totalRevenue }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.product">Product</span></dt>
+        <dd>
+          <div *ngIf="revenueForecast.product">
+            <a [routerLink]="['/product-or-service', revenueForecast.product.id, 'view']">{{ revenueForecast.product.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.revenueForecast.forecast">Forecast</span></dt>
+        <dd>
+          <div *ngIf="revenueForecast.forecast">
+            <a [routerLink]="['/financial-forecast', revenueForecast.forecast.id, 'view']">{{ revenueForecast.forecast.startDate }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/revenue-forecast', revenueForecast.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

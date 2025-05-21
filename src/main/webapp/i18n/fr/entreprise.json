@@ -1,0 +1,30 @@
+{
+  "ready2PlanBeApp": {
+    "entreprise": {
+      "home": {
+        "title": "Entreprises",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Entreprise",
+        "createOrEditLabel": "Créer ou éditer un Entreprise",
+        "search": "Recherche pour Entreprise",
+        "notFound": "Aucun Entreprise trouvé"
+      },
+      "created": "Un nouveau Entreprise a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Entreprise avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Entreprise avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Entreprise {{ id }} ?"
+      },
+      "detail": {
+        "title": "Entreprise"
+      },
+      "id": "ID",
+      "nom_etp": "Nom Etp",
+      "pays": "Pays",
+      "telephone": "Telephone",
+      "description": "Description",
+      "deviseSize": "Devise Size",
+      "devise": "Devise"
+    }
+  }
+}

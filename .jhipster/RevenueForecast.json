@@ -1,0 +1,40 @@
+{
+  "changelogDate": "20250513075733",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "month",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "unitsSold",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalRevenue",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "RevenueForecast",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "productOrService",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "startDate",
+      "otherEntityName": "financialForecast",
+      "relationshipName": "forecast",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

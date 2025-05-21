@@ -1,0 +1,26 @@
+{
+  "changelogDate": "20250513083049",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "monthlyAmount",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "ExpenseForecast",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "startDate",
+      "otherEntityName": "financialForecast",
+      "relationshipName": "forecast",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

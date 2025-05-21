@@ -1,0 +1,30 @@
+{
+  "ready2PlanBeApp": {
+    "businessPlan": {
+      "home": {
+        "title": "BusinessPlans",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Business Plan",
+        "createOrEditLabel": "Créer ou éditer un Business Plan",
+        "search": "Recherche pour Business Plan",
+        "notFound": "Aucun Business Plan trouvé"
+      },
+      "created": "Un nouveau Business Plan a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Business Plan avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Business Plan avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Business Plan {{ id }} ?"
+      },
+      "detail": {
+        "title": "Business Plan"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "creationDate": "Creation Date",
+      "entropreneurName": "Entropreneur Name",
+      "products": "Products",
+      "forecast": "Forecast"
+    }
+  }
+}

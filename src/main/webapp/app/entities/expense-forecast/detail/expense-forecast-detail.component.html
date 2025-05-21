@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="expenseForecast">
+      <h2 data-cy="expenseForecastDetailsHeading">
+        <span jhiTranslate="ready2PlanBeApp.expenseForecast.detail.title">Expense Forecast</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ expenseForecast.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.expenseForecast.label">Label</span></dt>
+        <dd>
+          <span>{{ expenseForecast.label }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.expenseForecast.monthlyAmount">Monthly Amount</span></dt>
+        <dd>
+          <span>{{ expenseForecast.monthlyAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.expenseForecast.forecast">Forecast</span></dt>
+        <dd>
+          <div *ngIf="expenseForecast.forecast">
+            <a [routerLink]="['/financial-forecast', expenseForecast.forecast.id, 'view']">{{ expenseForecast.forecast.startDate }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/expense-forecast', expenseForecast.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

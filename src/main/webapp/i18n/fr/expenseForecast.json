@@ -1,0 +1,27 @@
+{
+  "ready2PlanBeApp": {
+    "expenseForecast": {
+      "home": {
+        "title": "ExpenseForecasts",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Expense Forecast",
+        "createOrEditLabel": "Créer ou éditer un Expense Forecast",
+        "search": "Recherche pour Expense Forecast",
+        "notFound": "Aucun Expense Forecast trouvé"
+      },
+      "created": "Un nouveau Expense Forecast a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Expense Forecast avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Expense Forecast avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Expense Forecast {{ id }} ?"
+      },
+      "detail": {
+        "title": "Expense Forecast"
+      },
+      "id": "ID",
+      "label": "Label",
+      "monthlyAmount": "Monthly Amount",
+      "forecast": "Forecast"
+    }
+  }
+}

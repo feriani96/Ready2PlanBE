@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productOrService">
+      <h2 data-cy="productOrServiceDetailsHeading">
+        <span jhiTranslate="ready2PlanBeApp.productOrService.detail.title">Product Or Service</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productOrService.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.name">Name</span></dt>
+        <dd>
+          <span>{{ productOrService.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.description">Description</span></dt>
+        <dd>
+          <span>{{ productOrService.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.unitPrice">Unit Price</span></dt>
+        <dd>
+          <span>{{ productOrService.unitPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.estimatedMonthlySales">Estimated Monthly Sales</span></dt>
+        <dd>
+          <span>{{ productOrService.estimatedMonthlySales }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.durationInMonths">Duration In Months</span></dt>
+        <dd>
+          <span>{{ productOrService.durationInMonths }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.productOrService.businessPlan">Business Plan</span></dt>
+        <dd>
+          <div *ngIf="productOrService.businessPlan">
+            <a [routerLink]="['/business-plan', productOrService.businessPlan.id, 'view']">{{ productOrService.businessPlan.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-or-service', productOrService.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

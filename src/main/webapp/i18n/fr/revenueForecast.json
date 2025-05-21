@@ -1,0 +1,30 @@
+{
+  "ready2PlanBeApp": {
+    "revenueForecast": {
+      "home": {
+        "title": "RevenueForecasts",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Revenue Forecast",
+        "createOrEditLabel": "Créer ou éditer un Revenue Forecast",
+        "search": "Recherche pour Revenue Forecast",
+        "notFound": "Aucun Revenue Forecast trouvé"
+      },
+      "created": "Un nouveau Revenue Forecast a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Revenue Forecast avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Revenue Forecast avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Revenue Forecast {{ id }} ?"
+      },
+      "detail": {
+        "title": "Revenue Forecast"
+      },
+      "id": "ID",
+      "month": "Month",
+      "year": "Year",
+      "unitsSold": "Units Sold",
+      "totalRevenue": "Total Revenue",
+      "product": "Product",
+      "forecast": "Forecast"
+    }
+  }
+}

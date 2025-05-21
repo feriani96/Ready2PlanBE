@@ -1,0 +1,41 @@
+{
+  "changelogDate": "20250513082828",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "durationInMonths",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "FinancialForecast",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "businessPlan",
+      "ownerSide": true,
+      "relationshipName": "businessPlan",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "month",
+      "otherEntityName": "revenueForecast",
+      "otherEntityRelationshipName": "forecast",
+      "relationshipName": "revenues",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "label",
+      "otherEntityName": "expenseForecast",
+      "otherEntityRelationshipName": "forecast",
+      "relationshipName": "expenses",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

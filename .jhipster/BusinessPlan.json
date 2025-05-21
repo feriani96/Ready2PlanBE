@@ -1,0 +1,43 @@
+{
+  "changelogDate": "20250514072129",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "entropreneurName",
+      "fieldType": "String"
+    }
+  ],
+  "name": "BusinessPlan",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "productOrService",
+      "otherEntityRelationshipName": "businessPlan",
+      "relationshipName": "products",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "financialForecast",
+      "otherEntityRelationshipName": "businessPlan",
+      "ownerSide": false,
+      "relationshipName": "forecast",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

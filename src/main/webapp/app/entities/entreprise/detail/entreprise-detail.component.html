@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entreprise">
+      <h2 data-cy="entrepriseDetailsHeading"><span jhiTranslate="ready2PlanBeApp.entreprise.detail.title">Entreprise</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entreprise.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.nom_etp">Nom Etp</span></dt>
+        <dd>
+          <span>{{ entreprise.nom_etp }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.pays">Pays</span></dt>
+        <dd>
+          <span>{{ entreprise.pays }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ entreprise.telephone }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.description">Description</span></dt>
+        <dd>
+          <span>{{ entreprise.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.deviseSize">Devise Size</span></dt>
+        <dd>
+          <span>{{ entreprise.deviseSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="ready2PlanBeApp.entreprise.devise">Devise</span></dt>
+        <dd>
+          <span>{{ entreprise.devise }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entreprise', entreprise.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

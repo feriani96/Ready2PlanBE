@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductOrServiceHeading">
+    <span jhiTranslate="ready2PlanBeApp.productOrService.home.title">Product Or Services</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ready2PlanBeApp.productOrService.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-product-or-service"
+        [routerLink]="['/product-or-service/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="ready2PlanBeApp.productOrService.home.createLabel">
+          Create a new Product Or Service
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="ready2PlanBeApp.productOrService.home.search"
+          >Search for Product Or Service</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'ready2PlanBeApp.productOrService.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        <button class="btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+          <fa-icon icon="trash-alt"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="productOrServices?.length === 0">
+    <span jhiTranslate="ready2PlanBeApp.productOrService.home.notFound">No Product Or Services found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="productOrServices && productOrServices.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.name">Name</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.description">Description</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unitPrice">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.unitPrice">Unit Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estimatedMonthlySales">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.estimatedMonthlySales">Estimated Monthly Sales</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="durationInMonths">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.durationInMonths">Duration In Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="businessPlan.name">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.productOrService.businessPlan">Business Plan</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productOrService of productOrServices; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/product-or-service', productOrService.id, 'view']">{{ productOrService.id }}</a>
+          </td>
+          <td>{{ productOrService.name }}</td>
+          <td>{{ productOrService.description }}</td>
+          <td>{{ productOrService.unitPrice }}</td>
+          <td>{{ productOrService.estimatedMonthlySales }}</td>
+          <td>{{ productOrService.durationInMonths }}</td>
+          <td>
+            <div *ngIf="productOrService.businessPlan">
+              <a [routerLink]="['/business-plan', productOrService.businessPlan.id, 'view']">{{ productOrService.businessPlan.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/product-or-service', productOrService.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/product-or-service', productOrService.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(productOrService)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

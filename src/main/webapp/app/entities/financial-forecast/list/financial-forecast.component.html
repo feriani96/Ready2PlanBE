@@ -1,0 +1,134 @@
+<div>
+  <h2 id="page-heading" data-cy="FinancialForecastHeading">
+    <span jhiTranslate="ready2PlanBeApp.financialForecast.home.title">Financial Forecasts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ready2PlanBeApp.financialForecast.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-financial-forecast"
+        [routerLink]="['/financial-forecast/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="ready2PlanBeApp.financialForecast.home.createLabel">
+          Create a new Financial Forecast
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="ready2PlanBeApp.financialForecast.home.search"
+          >Search for Financial Forecast</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'ready2PlanBeApp.financialForecast.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        <button class="btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+          <fa-icon icon="trash-alt"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="financialForecasts?.length === 0">
+    <span jhiTranslate="ready2PlanBeApp.financialForecast.home.notFound">No Financial Forecasts found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="financialForecasts && financialForecasts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="startDate">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.financialForecast.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="durationInMonths">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.financialForecast.durationInMonths">Duration In Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="businessPlan.id">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.financialForecast.businessPlan">Business Plan</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let financialForecast of financialForecasts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/financial-forecast', financialForecast.id, 'view']">{{ financialForecast.id }}</a>
+          </td>
+          <td>{{ financialForecast.startDate }}</td>
+          <td>{{ financialForecast.durationInMonths }}</td>
+          <td>
+            <div *ngIf="financialForecast.businessPlan">
+              <a [routerLink]="['/business-plan', financialForecast.businessPlan.id, 'view']">{{ financialForecast.businessPlan.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/financial-forecast', financialForecast.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/financial-forecast', financialForecast.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(financialForecast)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

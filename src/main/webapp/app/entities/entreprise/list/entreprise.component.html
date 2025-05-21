@@ -1,0 +1,149 @@
+<div>
+  <h2 id="page-heading" data-cy="EntrepriseHeading">
+    <span jhiTranslate="ready2PlanBeApp.entreprise.home.title">Entreprises</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ready2PlanBeApp.entreprise.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-entreprise"
+        [routerLink]="['/entreprise/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="ready2PlanBeApp.entreprise.home.createLabel"> Create a new Entreprise </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="ready2PlanBeApp.entreprise.home.search"
+          >Search for Entreprise</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'ready2PlanBeApp.entreprise.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        <button class="btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+          <fa-icon icon="trash-alt"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="entreprises?.length === 0">
+    <span jhiTranslate="ready2PlanBeApp.entreprise.home.notFound">No Entreprises found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="entreprises && entreprises.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom_etp">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.nom_etp">Nom Etp</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pays">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.pays">Pays</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="telephone">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.telephone">Telephone</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.description">Description</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deviseSize">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.deviseSize">Devise Size</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="devise">
+            <div class="d-flex">
+              <span jhiTranslate="ready2PlanBeApp.entreprise.devise">Devise</span>
+              <fa-icon class="p-1" *ngIf="!currentSearch" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entreprise of entreprises; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/entreprise', entreprise.id, 'view']">{{ entreprise.id }}</a>
+          </td>
+          <td>{{ entreprise.nom_etp }}</td>
+          <td>{{ entreprise.pays }}</td>
+          <td>{{ entreprise.telephone }}</td>
+          <td>{{ entreprise.description }}</td>
+          <td>{{ entreprise.deviseSize }}</td>
+          <td>{{ entreprise.devise }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/entreprise', entreprise.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/entreprise', entreprise.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(entreprise)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

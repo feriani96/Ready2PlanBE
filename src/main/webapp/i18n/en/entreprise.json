@@ -1,0 +1,30 @@
+{
+  "ready2PlanBeApp": {
+    "entreprise": {
+      "home": {
+        "title": "Entreprises",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Entreprise",
+        "createOrEditLabel": "Create or edit a Entreprise",
+        "search": "Search for Entreprise",
+        "notFound": "No Entreprises found"
+      },
+      "created": "A new Entreprise is created with identifier {{ param }}",
+      "updated": "A Entreprise is updated with identifier {{ param }}",
+      "deleted": "A Entreprise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entreprise {{ id }}?"
+      },
+      "detail": {
+        "title": "Entreprise"
+      },
+      "id": "ID",
+      "nom_etp": "Nom Etp",
+      "pays": "Pays",
+      "telephone": "Telephone",
+      "description": "Description",
+      "deviseSize": "Devise Size",
+      "devise": "Devise"
+    }
+  }
+}

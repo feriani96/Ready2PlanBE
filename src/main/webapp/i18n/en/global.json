@@ -7,6 +7,12 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "entreprise": "Entreprise",
+        "productOrService": "Product Or Service",
+        "revenueForecast": "Revenue Forecast",
+        "businessPlan": "Business Plan",
+        "financialForecast": "Financial Forecast",
+        "expenseForecast": "Expense Forecast",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

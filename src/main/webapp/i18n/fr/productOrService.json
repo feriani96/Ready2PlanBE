@@ -1,0 +1,31 @@
+{
+  "ready2PlanBeApp": {
+    "productOrService": {
+      "home": {
+        "title": "ProductOrServices",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Product Or Service",
+        "createOrEditLabel": "Créer ou éditer un Product Or Service",
+        "search": "Recherche pour Product Or Service",
+        "notFound": "Aucun Product Or Service trouvé"
+      },
+      "created": "Un nouveau Product Or Service a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Product Or Service avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Product Or Service avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Product Or Service {{ id }} ?"
+      },
+      "detail": {
+        "title": "Product Or Service"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "unitPrice": "Unit Price",
+      "estimatedMonthlySales": "Estimated Monthly Sales",
+      "durationInMonths": "Duration In Months",
+      "revenueForecasts": "Revenue Forecasts",
+      "businessPlan": "Business Plan"
+    }
+  }
+}

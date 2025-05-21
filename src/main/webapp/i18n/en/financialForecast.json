@@ -1,0 +1,29 @@
+{
+  "ready2PlanBeApp": {
+    "financialForecast": {
+      "home": {
+        "title": "Financial Forecasts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Financial Forecast",
+        "createOrEditLabel": "Create or edit a Financial Forecast",
+        "search": "Search for Financial Forecast",
+        "notFound": "No Financial Forecasts found"
+      },
+      "created": "A new Financial Forecast is created with identifier {{ param }}",
+      "updated": "A Financial Forecast is updated with identifier {{ param }}",
+      "deleted": "A Financial Forecast is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Financial Forecast {{ id }}?"
+      },
+      "detail": {
+        "title": "Financial Forecast"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "durationInMonths": "Duration In Months",
+      "businessPlan": "Business Plan",
+      "revenues": "Revenues",
+      "expenses": "Expenses"
+    }
+  }
+}

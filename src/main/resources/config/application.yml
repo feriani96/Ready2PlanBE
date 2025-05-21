@@ -20,7 +20,9 @@ spring:
   config:
     activate:
       on-profile: '!api-docs'
-springdoc:
+  main:
+    allow-circular-references: true
+spring-doc:
   api-docs:
     enabled: false
 ---
